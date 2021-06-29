@@ -73,4 +73,40 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/////////////////////////////////////////////////
+const movementsUSD = movements.map(mov => mov * euroToUsd);
+console.log(movementsUSD);
+
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}:⬆ You ${mov > 0 ? 'deposited' : 'withdrew '} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescriptions);
+*/
+/*//*FILTER METHOD
+const deposits = movements.filter(function (mov) {
+  //more functional
+  //can also be use in chains like .map() .filter();
+
+  return mov > 0; //boolean #condition
+});
+console.log(movements);
+console.log(deposits);
+
+//same as doind but more efficient
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+//WITHDRAWALS
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
+*/
+console.log(movements);
+//accumulater ~> SNOWBALL
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur;
+}, 0); //initial value of accumulator)
+console.log(balance);
